@@ -7,7 +7,7 @@ const calculateHash = async () => {
 
     try {
         const stat = await fs.stat(pathFile);
-        const file = await fs.readFile(pathFile, { encoding: 'utf8' });
+        const file =await fs.readFile(pathFile, { encoding: 'utf8' });
         // create hash
         const hash = createHash('sha256');
             hash.setEncoding('hex');
