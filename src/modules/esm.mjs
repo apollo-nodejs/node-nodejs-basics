@@ -1,5 +1,5 @@
 import path from 'path';
-import {fileURLToPath} from 'url';
+import { fileURLToPath } from 'url';
 import { release, version } from 'os';
 import { createServer as createServerHttp } from 'http';
 // simple include file (not module). file start now
@@ -8,17 +8,18 @@ import './files/c.js';
 const random = Math.random();
 let unknownObject;
 
-    if (random > 0.5) {
-        unknownObject = await import ('./files/a.json', {assert: { type: "json" }});
-    } else {
-        unknownObject = await import ('./files/b.json', {assert: { type: "json" }});
-    }
+if (random > 0.5) {
+    unknownObject = await import('./files/a.json', { assert: { type: "json" } });
+} else {
+    unknownObject = await import('./files/b.json', { assert: { type: "json" } });
+}
 
 console.log(`Release ${release()}`);
 console.log(`Version ${version()}`);
 console.log(`Path segment separator is "${path.sep}"`);
 
-// В модуле глобальные переменные не работают. Решается следующим кодом
+// TODO: В модуле глобальные переменные не работают. Решается следующим кодом
+// FIXME:
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
